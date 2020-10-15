@@ -54,7 +54,7 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("UserConnected", login);
 			request.getRequestDispatcher("/todo-list.jsp").forward(request, response);
 		}else {
-			response.sendRedirect("/login");
+			response.sendRedirect("login");
 		}
 		
 	}
