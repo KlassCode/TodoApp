@@ -15,7 +15,7 @@ public class TodoImplement implements TodoDAO {
 	private static final String INSERT_TODOS = "INSERT INTO todos(title,username,description,targetDate,isDone) VALUES(?,?,?,?,?);";
 	private static final String SELECT_TODO_BYID = "SELECT * FROM todos WHERE id = ?";
 	private static final String SELECT_ALL_TODOS = "SELECT * FROM todos";
-	private static final String UPDATE_TODO = "UPDATE todos SET title =? ,username = ? ,description=?, targetDate WHERE id= ? ";
+	private static final String UPDATE_TODO = "UPDATE todos SET title =? ,username = ? ,description=?, targetDate=?,isDone=? WHERE id= ? ";
 	private static final String DELETE_TODO = "DELETE FROM todos WHERE id = ?";
 
 	@Override
@@ -115,6 +115,7 @@ public class TodoImplement implements TodoDAO {
 	public boolean updateTodo(Todo todo) {
 		boolean rowUpdated = false;
 		try (PreparedStatement statement = JDBCUtils.getConnection().prepareStatement(UPDATE_TODO);) {
+			
 			statement.setString(1, todo.getTitle());
 			statement.setString(2, todo.getUsername());
 			statement.setString(3, todo.getDescription());
