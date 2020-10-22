@@ -52,7 +52,7 @@ public class LoginController extends HttpServlet {
 		if(loginDao.validate(login)) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("UserConnected", login);
-			request.getRequestDispatcher("todo/todo-list.jsp").forward(request, response);
+			request.getRequestDispatcher("/accueil.jsp").forward(request, response);
 		}else {
 			response.sendRedirect("login");
 		}
