@@ -18,26 +18,28 @@
 	<jsp:include page="common/header.jsp"></jsp:include>
 	<div class="container col-md-8 col-md-offset-3" style="overflow: auto">
 
-		
-		
-		<c:if test="${ error != null }">
-
-
-		</c:if>
-
 		<h1>Login Form</h1>
 		<form action="login" method="post">
-			<div class="alert alert-danger center" role="alert">${ error }</div>
+			
+			<c:if test="${ erreurConnexion != null }">
+				<div class="alert alert-warning center" role="alert">${ erreurConnexion }</div>
+			</c:if>
+			
+			<br>
+			<c:if test="${ error != null }">
+				<div class="alert alert-danger center" role="alert">${ error }</div>
+			</c:if>
+			
 			<div class="form-group">
 				<label for="uname">User Name:</label> <input type="text"
 					class="form-control" id="username" placeholder="User Name"
-					name="username" required>
+					name="username" >
 			</div>
 
 			<div class="form-group">
 				<label for="uname">Password:</label> <input type="password"
 					class="form-control" id="password" placeholder="Password"
-					name="password" required>
+					name="password" >
 			</div>
 
 
