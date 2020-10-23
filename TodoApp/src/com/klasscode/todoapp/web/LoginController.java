@@ -32,7 +32,9 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setAttribute("error",null);
 		request.getRequestDispatcher("/login.jsp").forward(request, response);
+		
 	}
 
 	/**
@@ -54,7 +56,9 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("UserConnected", login);
 			request.getRequestDispatcher("todo/todo-list.jsp").forward(request, response);
 		}else {
-			response.sendRedirect("login");
+			
+			request.setAttribute("error", "Identifiant/password incorrect");
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
 		}
 		
 	}

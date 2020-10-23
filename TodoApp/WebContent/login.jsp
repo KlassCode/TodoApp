@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,9 +17,17 @@
 
 	<jsp:include page="common/header.jsp"></jsp:include>
 	<div class="container col-md-8 col-md-offset-3" style="overflow: auto">
+
+		
+		
+		<c:if test="${ error != null }">
+
+
+		</c:if>
+
 		<h1>Login Form</h1>
 		<form action="login" method="post">
-
+			<div class="alert alert-danger center" role="alert">${ error }</div>
 			<div class="form-group">
 				<label for="uname">User Name:</label> <input type="text"
 					class="form-control" id="username" placeholder="User Name"

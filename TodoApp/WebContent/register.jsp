@@ -20,14 +20,18 @@
 	<br>
 	<div class="container-fluid col-md-8">
 
-		<div class="alert alert-success center" role="alert"><p>${ NOTIFICATION }</p></div>
-		
+		<c:if test="${ NOTIFICATION != null }">
+			<div class="alert alert-success center" role="alert">
+				${ NOTIFICATION }
+			</div>
+		</c:if>
+
 		<c:forEach items="${ErrorMessage}" var="error">
 
 			<div class="alert alert-danger" role="alert">${error}</div>
 			<br>
 		</c:forEach>
-		
+
 		<form action="register" method="post">
 			<div class="form-group row">
 				<label for="colFormLabel" class="col-sm-2 col-form-label">First

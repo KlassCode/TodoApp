@@ -2,6 +2,7 @@ package com.klasscode.todoapp.web;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +22,7 @@ public class UserController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private UserDAO userdao;
-	private ArrayList<String> errors = new ArrayList<>();
+	
 
 	@Override
 	public void init() throws ServletException {
@@ -37,9 +38,9 @@ public class UserController extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	
-		errors.removeAll(errors);
+		
 		request.setAttribute("ErrorMessage", null);
-		request.setAttribute("NOTIFICATION", "");
+		request.setAttribute("NOTIFICATION", null);
 		request.getRequestDispatcher("/register.jsp").forward(request, response);
 	}
 
@@ -54,7 +55,7 @@ public class UserController extends HttpServlet {
 		String lastName = request.getParameter("lastName");
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
-		
+		List<String> errors = new ArrayList<>();
 		
 		String[] fields = { firstName, lastName, userName, password };
 		if (FunctionsUtils.checkEmptyFields(fields)) {
